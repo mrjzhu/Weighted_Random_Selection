@@ -7,11 +7,21 @@ public class Weighted_Random_Sampling_Algorithm {
 
 	public void Weighted_Random_select(int times, double[] weights){
 		
-		System.out.println("Test:");			
 		
 		System.out.println("Red weight:    "+ weights[0]);
 		System.out.println("Blue weight:   "+ weights[1]);
 		System.out.println("Yellow weight: "+ weights[2]);
+		
+		double totalWeight = 0;
+		for(double n: weights){
+			totalWeight += n;
+		}
+		for(int i = 0; i < weights.length; i++){
+			weights[i] = weights[i] / totalWeight;
+		}
+		
+		
+		
 
 		
 		System.out.println("===================");
@@ -38,9 +48,25 @@ public class Weighted_Random_Sampling_Algorithm {
 		
 		Weighted_Random_Sampling_Algorithm w = new Weighted_Random_Sampling_Algorithm();
 		
-		double[] weights = {0.20,0.30,0.50};
+		System.out.println();
+		System.out.println("-------------------Test 1-----------------");
+		double[] weights_test1 = {4,4,8};
+		w.Weighted_Random_select(10000, weights_test1);
 		
-		w.Weighted_Random_select(10000, weights);
+		
+		System.out.println();
+		System.out.println("-------------------Test 2-----------------");
+		double[] weights_test2 = {0.40,0.80,0.20};
+		w.Weighted_Random_select(10000, weights_test2);
+		
+		
+		System.out.println();
+		System.out.println("-------------------Test 3-----------------");
+		
+		double[] weights_test3 = {0.20,0.30,0.50};
+		w.Weighted_Random_select(10000, weights_test3);
+		
+		
 
 	}
 	
